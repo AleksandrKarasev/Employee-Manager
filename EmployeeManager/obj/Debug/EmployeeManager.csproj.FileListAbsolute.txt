@@ -13,3 +13,6 @@ C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeMa
 C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeManager.exe
 C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeManager.pdb
 C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeManager.exe.config
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\bin\Debug\Newtonsoft.Json.dll
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\bin\Debug\Newtonsoft.Json.xml
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\Employee.E292E15C.Up2Date

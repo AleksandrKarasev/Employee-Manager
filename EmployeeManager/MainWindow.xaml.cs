@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace EmployeeManager
@@ -11,121 +13,234 @@ namespace EmployeeManager
         public MainWindow()
         {
             InitializeComponent();
+            LoadData();
+            UpdateDataGrid();
         }
 
-        private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
+        private async void LoadData()
         {
-
-            string name = txtName.Text;
-            string position = txtPosition.Text;
-            decimal salary;
-
-            if (decimal.TryParse(txtSalary.Text, out salary))
+            ShowLoading();
+            await Task.Run(() =>
             {
-                // Создаем 3 объекта с различными конструкторами
-                if (employees.Count < 3)
-                {
-                    if (employees.Count == 0)
-                    {
-                        // Первый объект с полным конструктором
-                        employees.Add(new Employee(name, position, salary));
-                    }
-                    else if (employees.Count == 1)
-                    {
-                        // Второй объект с двумя параметрами
-                        employees.Add(new Employee(name, position));
-                        employees[1].Salary = salary; // Устанавливаем зарплату вручную
-                    }
-                    else if (employees.Count == 2)
-                    {
-                        // Третий объект с пустым конструктором
-                        Employee employee = new Employee();
-                        employee.Name = name;
-                        employee.Position = position;
-                        employee.Salary = salary;
-                        employees.Add(employee);
-                    }
+                employees = EmployeeDataManager.LoadData();
+            });
+            UpdateDataGrid();
+            HideLoading();
+        }
 
-                    UpdateEmployeeList();
-                    ClearInputFields();
+        private void RefreshData(object sender, RoutedEventArgs e)
+        {
+            LoadData(); // Перезагружаем данные
+        }
+
+        private void ShowAddEmployeeBlock(object sender, RoutedEventArgs e)
+        {
+            AddEmployeePanel.Visibility = Visibility.Visible;
+            AddManagerPanel.Visibility = Visibility.Collapsed;
+            ChangeSalaryPanel.Visibility = Visibility.Collapsed;
+            ClearEmployeeFields();
+        }
+
+        private void ShowAddManagerBlock(object sender, RoutedEventArgs e)
+        {
+            AddEmployeePanel.Visibility = Visibility.Collapsed;
+            AddManagerPanel.Visibility = Visibility.Visible;
+            ChangeSalaryPanel.Visibility = Visibility.Collapsed;
+            ClearManagerFields();
+        }
+
+        private void ShowChangeSalaryBlock(object sender, RoutedEventArgs e)
+        {
+            AddEmployeePanel.Visibility = Visibility.Collapsed;
+            AddManagerPanel.Visibility = Visibility.Collapsed;
+            ChangeSalaryPanel.Visibility = Visibility.Visible;
+            ClearSalaryFields();
+        }
+
+        private async void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowLoading();
+            string searchTerm = txtSearch.Text.Trim().ToLower();
+            List<Employee> filteredEmployees = null;
+
+            await Task.Run(() =>
+            {
+                filteredEmployees = employees.Where(emp =>
+                    emp.FirstName.ToLower().Contains(searchTerm) || emp.LastName.ToLower().Contains(searchTerm)).ToList();
+            });
+
+            UpdateDataGrid(filteredEmployees);
+            HideLoading();
+        }
+
+        private async void ShowData(object sender, RoutedEventArgs e)
+        {
+            ShowLoading();
+            await Task.Run(() => { /* Выполнение длительных операций при обновлении данных, если потребуется */ });
+            UpdateDataGrid(employees);
+            HideLoading();
+        }
+
+        private async void ClearData(object sender, RoutedEventArgs e)
+        {
+            ShowLoading();
+            await Task.Run(() => { employees.Clear(); });
+            MessageBox.Show("Все данные очищены.");
+
+            UpdateDataGrid();
+            EmployeeDataManager.SaveData(employees); // Передаем список для сохранения
+            HideLoading();
+        }
+
+        private async void AddEmployeeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Decimal.TryParse(txtEmployeeSalary.Text, out decimal salary) &&
+                Decimal.TryParse(txtEmployeeBonus.Text, out decimal bonus))
+            {
+                Employee newEmployee = new Employee(
+                    txtEmployeeLastName.Text.Trim(),
+                    txtEmployeeFirstName.Text.Trim(),
+                    txtEmployeeMiddleName.Text.Trim(),
+                    txtEmployeePosition.Text.Trim(),
+                    salary,
+                    bonus);
+                ShowLoading();
+                await Task.Run(() => { employees.Add(newEmployee); });
+                UpdateDataGrid();
+                EmployeeDataManager.SaveData(employees); // Передаем список для сохранения
+                ClearEmployeeFields();
+                MessageBox.Show("Сотрудник добавлен успешно!");
+                HideLoading();
+            }
+            else
+            {
+                MessageBox.Show("Введите корректные значения для зарплаты и бонуса.");
+            }
+        }
+
+        private async void AddManagerButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Decimal.TryParse(txtManagerSalary.Text, out decimal salary) &&
+                Decimal.TryParse(txtManagerBonus.Text, out decimal bonus))
+            {
+                // Предполагается, что Manager - это подкласс Employee
+                Employee newManager = new Employee(
+                    txtManagerLastName.Text.Trim(),
+                    txtManagerFirstName.Text.Trim(),
+                    txtManagerMiddleName.Text.Trim(),
+                    txtManagerPosition.Text.Trim(),
+                    salary,
+                    bonus);
+                ShowLoading();
+                await Task.Run(() => { employees.Add(newManager); });
+                UpdateDataGrid();
+                EmployeeDataManager.SaveData(employees); // Передаем список для сохранения
+                ClearManagerFields();
+                MessageBox.Show("Менеджер добавлен успешно!");
+                HideLoading();
+            }
+            else
+            {
+                MessageBox.Show("Введите корректные значения для зарплаты и бонуса.");
+            }
+        }
+
+        private async void ChangeSalaryButton_Click(object sender, RoutedEventArgs e)
+        {
+            string lastName = txtChangeSalaryLastName.Text.Trim();
+            string firstName = txtChangeSalaryFirstName.Text.Trim();
+            string middleName = txtChangeSalaryMiddleName.Text.Trim();
+
+            if (Decimal.TryParse(txtChangeSalaryPercentage.Text, out decimal salaryPercentage) &&
+                Decimal.TryParse(txtChangeBonusPercentage.Text, out decimal bonusPercentage)) // Изменяем на два процента
+            {
+                ShowLoading();
+                Employee employee = null;
+
+                await Task.Run(() =>
+                {
+                    employee = employees.FirstOrDefault(emp =>
+                        emp.FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase) &&
+                        emp.LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase) &&
+                        emp.MiddleName.Equals(middleName, StringComparison.OrdinalIgnoreCase));
+                });
+
+                if (employee != null)
+                {
+                    employee.IncreaseSalary(salaryPercentage); // Увеличиваем зарплату
+
+                    employee.Bonus += employee.Bonus * bonusPercentage / 100; // Увеличиваем бонус отдельно
+                    MessageBox.Show($"Зарплата для {employee.FirstName} {employee.LastName} увеличена на {salaryPercentage}%. Бонус увеличен на {bonusPercentage}%.");
+                    UpdateDataGrid();
+                    EmployeeDataManager.SaveData(employees); // Сохраняем изменения
                 }
                 else
                 {
-                    MessageBox.Show("Максимум 3 сотрудника.");
+                    MessageBox.Show($"Сотрудник с именем '{firstName} {lastName}' не найден.");
                 }
+
+                ClearSalaryFields();
+                HideLoading();
             }
             else
             {
-                MessageBox.Show("Введите корректную зарплату");
+                MessageBox.Show("Введите корректные значения для процентов увеличения зарплаты и бонуса.");
             }
         }
 
-        private void btnIncreaseSalary_Click(object sender, RoutedEventArgs e)
+        private void UpdateDataGrid(List<Employee> filteredEmployees = null)
         {
-            decimal percentage;
+            employeeDataGrid.ItemsSource = filteredEmployees ?? employees;
+        }
 
-            if (decimal.TryParse(txtIncreasePercentage.Text, out percentage) && lstEmployees.SelectedItem is Employee selectedEmployee)
+        private void ShowLoading()
+        {
+            LoadingPanel.Visibility = Visibility.Visible;
+            this.IsEnabled = false; // Блокируем основное окно
+        }
+
+        private void HideLoading()
+        {
+            LoadingPanel.Visibility = Visibility.Collapsed;
+            this.IsEnabled = true; // Разблокируем основное окно
+        }
+
+        private void OnTextBoxGotFocus(object sender, RoutedEventArgs e)
+        {
+            var textBox = sender as System.Windows.Controls.TextBox;
+            if (textBox != null && (textBox.Text != string.Empty))
             {
-                selectedEmployee.IncreaseSalary(percentage);
-                UpdateEmployeeList();
-            }
-            else
-            {
-                MessageBox.Show("Выберите сотрудника и введите корректный процент увеличения.");
+                textBox.Clear();
             }
         }
 
-        private void btnShowSalary_Click(object sender, RoutedEventArgs e)
+        private void ClearEmployeeFields()
         {
-            if (lstEmployees.SelectedItem is Employee selectedEmployee)
-            {
-                MessageBox.Show($"Зарплата {selectedEmployee.Name}: {selectedEmployee.Salary:C}");
-            }
-            else
-            {
-                MessageBox.Show("Выберите сотрудника для показа зарплаты.");
-            }
+            txtEmployeeLastName.Text = "Фамилия";
+            txtEmployeeFirstName.Text = "Имя";
+            txtEmployeeMiddleName.Text = "Отчество";
+            txtEmployeePosition.Text = "Должность";
+            txtEmployeeSalary.Text = "Зарплата";
+            txtEmployeeBonus.Text = "Бонус";
         }
 
-        private void btnChangeSalary_Click(object sender, RoutedEventArgs e)
+        private void ClearManagerFields()
         {
-            if (lstEmployees.SelectedItem is Employee selectedEmployee)
-            {
-                string input = Microsoft.VisualBasic.Interaction.InputBox("Введите новую зарплату:", "Изменить зарплату", selectedEmployee.Salary.ToString());
-
-                if (decimal.TryParse(input, out decimal newSalary))
-                {
-                    selectedEmployee.Salary = newSalary;
-                    UpdateEmployeeList();
-                    MessageBox.Show($"Зарплата для {selectedEmployee.Name} изменена на: {selectedEmployee.Salary:C}");
-                }
-                else
-                {
-                    MessageBox.Show("Введите корректное значение зарплаты.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Выберите сотрудника для изменения зарплаты.");
-            }
+            txtManagerLastName.Text = "Фамилия";
+            txtManagerFirstName.Text = "Имя";
+            txtManagerMiddleName.Text = "Отчество";
+            txtManagerPosition.Text = "Должность";
+            txtManagerSalary.Text = "Зарплата";
+            txtManagerBonus.Text = "Бонус";
         }
 
-        private void UpdateEmployeeList()
+        private void ClearSalaryFields()
         {
-            lstEmployees.Items.Clear();
-            foreach (var employee in employees)
-            {
-
-                lstEmployees.Items.Add(employee);
-            }
-        }
-
-        private void ClearInputFields()
-        {
-            txtName.Clear();
-            txtPosition.Clear();
-            txtSalary.Clear();
-            txtIncreasePercentage.Clear();
+            txtChangeSalaryLastName.Text = "Фамилия";
+            txtChangeSalaryFirstName.Text = "Имя";
+            txtChangeSalaryMiddleName.Text = "Отчество";
+            txtChangeSalaryPercentage.Text = "Процент увеличения зарплаты";
+            txtChangeBonusPercentage.Text = "Процент увеличения бонуса";
         }
     }
 }
