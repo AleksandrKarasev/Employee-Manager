@@ -1,29 +1,28 @@
 ﻿<Window x:Class="EmployeeManager.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Управление сотрудниками" Height="450" Width="400">
+        Title="Управление сотрудниками" Height="600" Width="400">
     <Grid Margin="10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="261*"/>
-            <ColumnDefinition Width="119*"/>
-        </Grid.ColumnDefinitions>
-        <Label Content="Имя:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="36"/>
-        <TextBox x:Name="txtName" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,20,0,0" Height="18"/>
+        <Label Content="Имя:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,20,0,0"/>
 
-        <Label Content="Должность:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,0" Height="26" Width="74"/>
-        <TextBox x:Name="txtPosition" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,70,0,0" Height="18"/>
+        <Label Content="Должность:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,0"/>
+        <TextBox x:Name="txtPosition" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,70,0,0"/>
 
-        <Label Content="Зарплата:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,100,0,0" Height="26" Width="63"/>
-        <TextBox x:Name="txtSalary" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,120,0,0" Height="18"/>
+        <Label Content="Зарплата:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,100,0,0"/>
+        <TextBox x:Name="txtSalary" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,120,0,0"/>
 
-        <Button Content="Добавить сотрудника" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,150,0,0" Click="btnAddEmployee_Click" Height="20"/>
+        <Button Content="Добавить сотрудника" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,150,0,0" Click="btnAddEmployee_Click"/>
 
-        <Label Content="Процент увеличения:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,190,0,0" Height="26" Width="129"/>
-        <TextBox x:Name="txtIncreasePercentage" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,210,0,0" Height="18"/>
+        <Label Content="Процент увеличения:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,190,0,0"/>
+        <TextBox x:Name="txtIncreasePercentage" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,210,0,0"/>
 
-        <Button Content="Увеличить зарплату" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,240,0,0" Click="btnIncreaseSalary_Click" Height="20"/>
+        <Button Content="Увеличить зарплату" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,240,0,0" Click="btnIncreaseSalary_Click"/>
 
-        <ListBox x:Name="lstEmployees" HorizontalAlignment="Left" VerticalAlignment="Top" Width="360" Height="150" Margin="0,280,0,0" Grid.ColumnSpan="2"/>
+        <ListBox x:Name="lstEmployees" HorizontalAlignment="Left" VerticalAlignment="Top" Width="360" Height="150" Margin="0,280,0,0"/>
+
+        <Button Content="Показать зарплату" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,450,0,0" Click="btnShowSalary_Click"/>
+        <Button Content="Изменить зарплату" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,480,0,0" Click="btnChangeSalary_Click"/>
     </Grid>
 </Window>
 

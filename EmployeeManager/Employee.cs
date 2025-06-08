@@ -11,14 +11,14 @@ namespace EmployeeManager
         // Конструктор без параметров
         public Employee() { }
 
-        // Конструктор с параметрами
+        // Конструктор с двумя параметрами
         public Employee(string name, string position)
         {
             Name = name;
             Position = position;
         }
 
-        // Конструктор с параметрами
+        // Конструктор с тремя параметрами
         public Employee(string name, string position, decimal salary)
         {
             Name = name;
@@ -26,11 +26,13 @@ namespace EmployeeManager
             Salary = salary;
         }
 
+        // Метод для увеличения зарплаты
         public void IncreaseSalary(decimal percentage)
         {
             Salary += Salary * percentage / 100;
         }
 
+        // Переопределение метода ToString для отображения информации о сотруднике
         public override string ToString()
         {
             return $"{Name}, {Position}, Зарплата: {Salary:C}";

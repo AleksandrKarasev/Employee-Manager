@@ -12,3 +12,4 @@ C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeMa
 C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeManager.csproj.CoreCompileInputs.cache
 C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeManager.exe
 C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeManager.pdb
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeManager.exe.config
