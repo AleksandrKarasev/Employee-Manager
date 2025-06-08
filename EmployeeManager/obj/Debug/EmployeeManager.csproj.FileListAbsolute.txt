@@ -1,0 +1,14 @@
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeManager.csproj.AssemblyReference.cache
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\App.g.cs
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeManager_MarkupCompile.cache
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\bin\Debug\EmployeeManager.exe.config
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\bin\Debug\EmployeeManager.exe
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\bin\Debug\EmployeeManager.pdb
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\MainWindow.baml
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\MainWindow.g.cs
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeManager.g.resources
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeManager.Properties.Resources.resources
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeManager.csproj.GenerateResource.cache
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeManager.csproj.CoreCompileInputs.cache
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeManager.exe
+C:\Users\aleks\source\repos\EmployeeManager\EmployeeManager\obj\Debug\EmployeeManager.pdb

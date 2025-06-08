@@ -1,0 +1,87 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\aleks\\source\\repos\\EmployeeManager\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C04661A4-BEA4-4786-B61D-3079D3D98B4B}|EmployeeManager\\EmployeeManager.csproj|c:\\users\\aleks\\source\\repos\\employeemanager\\employeemanager\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C04661A4-BEA4-4786-B61D-3079D3D98B4B}|EmployeeManager\\EmployeeManager.csproj|solutionrelative:employeemanager\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C04661A4-BEA4-4786-B61D-3079D3D98B4B}|EmployeeManager\\EmployeeManager.csproj|c:\\users\\aleks\\source\\repos\\employeemanager\\employeemanager\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C04661A4-BEA4-4786-B61D-3079D3D98B4B}|EmployeeManager\\EmployeeManager.csproj|solutionrelative:employeemanager\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C04661A4-BEA4-4786-B61D-3079D3D98B4B}|EmployeeManager\\EmployeeManager.csproj|c:\\users\\aleks\\source\\repos\\employeemanager\\employeemanager\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C04661A4-BEA4-4786-B61D-3079D3D98B4B}|EmployeeManager\\EmployeeManager.csproj|solutionrelative:employeemanager\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C04661A4-BEA4-4786-B61D-3079D3D98B4B}|EmployeeManager\\EmployeeManager.csproj|c:\\users\\aleks\\source\\repos\\employeemanager\\employeemanager\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{C04661A4-BEA4-4786-B61D-3079D3D98B4B}|EmployeeManager\\EmployeeManager.csproj|solutionrelative:employeemanager\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\EmployeeManager\\EmployeeManager\\README.md",
+              "RelativeDocumentMoniker": "EmployeeManager\\README.md",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\EmployeeManager\\EmployeeManager\\README.md",
+              "RelativeToolTip": "EmployeeManager\\README.md",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAAAGwAAABzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-06-08T13:58:33.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\EmployeeManager\\EmployeeManager\\Employee.cs",
+              "RelativeDocumentMoniker": "EmployeeManager\\Employee.cs",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\EmployeeManager\\EmployeeManager\\Employee.cs",
+              "RelativeToolTip": "EmployeeManager\\Employee.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAiwCcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T13:50:44.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\EmployeeManager\\EmployeeManager\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "EmployeeManager\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\EmployeeManager\\EmployeeManager\\MainWindow.xaml",
+              "RelativeToolTip": "EmployeeManager\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-08T13:45:49.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\source\\repos\\EmployeeManager\\EmployeeManager\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "EmployeeManager\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\aleks\\source\\repos\\EmployeeManager\\EmployeeManager\\MainWindow.xaml.cs",
+              "RelativeToolTip": "EmployeeManager\\MainWindow.xaml.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAiwEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T13:45:49.298Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
